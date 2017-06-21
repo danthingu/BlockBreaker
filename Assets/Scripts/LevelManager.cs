@@ -20,4 +20,13 @@ public class LevelManager : MonoBehaviour {
     {
         Application.LoadLevel(Application.loadedLevel + 1);
     }
+
+    //Message
+    public void BrickDestroyed()
+    {
+        if (Brick.breakableCount <= 0) // last brick was destroyed
+        {
+            LoadNextLevel();
+        }
+    }
 }
