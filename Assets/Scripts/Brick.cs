@@ -8,6 +8,7 @@ public class Brick : MonoBehaviour {
     public Sprite[] hitSprites;
     public static int breakableCount = 0;
     public AudioClip crack;
+    public GameObject Smoke;
 
     private int timesHit;
     private LevelManager levelManager;
@@ -61,7 +62,10 @@ public class Brick : MonoBehaviour {
     private void LoadSprites()
     {
         int spriteIndex = timesHit - 1;
-        this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        if (hitSprites[spriteIndex] != null)
+            this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        else
+            Debug.LogError("Brick Sprite missing");
     }
 
     private void SimulateWin()
